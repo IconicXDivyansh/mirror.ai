@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# mirror.ai
+
+A Next.js application built with Supabase, Drizzle ORM, and shadcn/ui.
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router, React 19)
+- **UI**: shadcn/ui + Tailwind CSS v4
+- **Database**: PostgreSQL via Drizzle ORM
+- **Auth & Storage**: Supabase
+- **Validation**: Zod
+- **Linting**: oxlint + oxfmt
+- **Testing**: Vitest
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 24+ (see `.nvmrc`)
+- Bun package manager
+
+### Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install dependencies
+bun install
+
+# Copy env file and fill in values
+cp .env.example .env
+
+# Start dev server
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Available Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command             | Description              |
+| ------------------- | ------------------------ |
+| `bun run dev`       | Start development server |
+| `bun run build`     | Production build         |
+| `bun run lint`      | Lint with oxlint         |
+| `bun run lint:fix`  | Lint and auto-fix        |
+| `bun run fmt`       | Format with oxfmt        |
+| `bun run fmt:check` | Check formatting         |
+| `bun run test`      | Run tests with vitest    |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Pre-commit Hooks
 
-## Learn More
+Husky runs lint-staged on every commit:
 
-To learn more about Next.js, take a look at the following resources:
+- Formats staged files with oxfmt
+- Lints and auto-fixes JS/TS files with oxlint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) enforced by commitlint.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+├── app/              # Next.js App Router pages
+├── components/       # React components
+│   └── ui/           # shadcn/ui components
+├── lib/              # Shared utilities
+│   ├── db/           # Drizzle ORM (schema, migrations)
+│   ├── supabase/     # Supabase client (browser + server)
+│   ├── env.ts        # Server env validation
+│   └── env.client.ts # Client env validation
+├── notes/            # Development learnings
+├── tests/            # Vitest tests
+└── public/           # Static assets
+```

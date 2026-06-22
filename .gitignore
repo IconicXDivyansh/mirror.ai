@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI agent tooling
+.agents/
+.claude/
+.codex/
+.cursor/
+.vscode/
+.tessl/
+tessl.json
+.mcp.json
+opencode.jsonc
+skills-lock.json
+.codegraph/
+.gemini/
+.github/skills/
